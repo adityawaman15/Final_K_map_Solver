@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theory | K-Map Solver</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+
+            <div class="logo-section">
+
+                <div class="pcce-logo-container">
+                    <img src="../assets/pccoe.png" alt="PCCOE Logo" class="pcce-logo-img">
+
+                    <div class="pcce-logo-text">
+                        <span class="main">APPLIED SCIENCES & HUMANITIES</span>
+                        <span class="sub">Pimpri Chinchwad College of Engineering</span>
+                    </div>
+                </div>
+
+                <div class="header-divider"></div>
+
+                <div class="virtual-labs-logo">
+                    <i class="fas fa-flask"></i>
+                    <h1>Virtual <span>Lab</span></h1>
+                </div>
+
+            </div>
+
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Welcome, Student</span>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+
+        <!-- Sidebar  -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="../home.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="aim.html" class="nav-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Aim</span>
+                </a>
+                <a href="theory.html" class="nav-item active">
+                    <i class="fas fa-book"></i>
+                    <span>Theory</span>
+                </a>
+                <a href="pre-test.html" class="nav-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Pre-test</span>
+                </a>
+                <a href="assignment.html" class="nav-item">
+                    <i class="fa fa-check"></i>
+                    <span>Assignment</span>
+                </a>
+                <a href="simulation.html" class="nav-item">
+                    <i class="fas fa-desktop"></i>
+                    <span>Simulation</span>
+                </a>
+                <a href="post-test.html" class="nav-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Post-test</span>
+                </a>
+                <a href="reference.html" class="nav-item">
+                    <i class="fas fa-book-open"></i>
+                    <span>References</span>
+                </a>
+                <a href="contributors.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Contributors</span>
+                </a>
+                <a href="feedback.html" class="nav-item">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>Feedback</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- theory Content -->
+        <main class="container home-content">
+
+            <div class="content-header">
+                <h2>Theory</h2>
+                <p>Karnaugh Map (K-Map) Minimization Technique</p>
+            </div>
+
+            <div class="theory-content">
+
+                <section class="theory-section">
+                    <p>
+                        Digital systems operate using Boolean logic, where variables assume binary values
+                        <strong>0</strong> or <strong>1</strong>. Complex logical functions used in digital
+                        circuits can be expressed and simplified using Boolean algebra. However, algebraic
+                        simplification becomes tedious and error-prone as the number of variables increases.
+                    </p>
+
+                    <p>
+                        To overcome this limitation, <strong>Karnaugh Maps (K-Maps)</strong> provide a
+                        systematic and graphical technique for minimizing Boolean expressions.
+                    </p>
+                </section>
+
+                <section class="theory-section">
+                    <h3>Boolean Functions and Minterms</h3>
+
+                    <p>
+                        A Boolean function is an expression formed using Boolean variables, logical operators
+                        (AND, OR, NOT), and constants. A function can be completely described using its
+                        <strong>minterms</strong>.
+                    </p>
+
+                    <p>
+                        A <strong>minterm</strong> is a product (AND) term in which all variables appear exactly
+                        once, either in complemented or uncomplemented form. Each minterm corresponds to one
+                        unique combination of input variables that produces an output of 1.
+                    </p>
+
+                    <p><strong>Example: 3-Variable Function F(A, B, C)</strong></p>
+
+                    <table class="theory-table">
+                        <thead>
+                            <tr>
+                                <th>Decimal</th>
+                                <th>Binary</th>
+                                <th>Minterm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>001</td>
+                                <td>A′B′C</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>101</td>
+                                <td>AB′C</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>110</td>
+                                <td>ABC′</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>111</td>
+                                <td>ABC</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        The <strong>Canonical Sum of Products (SOP)</strong> form is obtained by logically OR-ing
+                        all such minterms.
+                    </p>
+                </section>
+
+                <section class="theory-section">
+                    <h3>Canonical Sum of Products (SOP)</h3>
+
+                    <p>
+                        The canonical SOP representation expresses a Boolean function as a sum of all minterms
+                        for which the output is 1.
+                    </p>
+
+                    <ul>
+                        <li>Each term contains all variables</li>
+                        <li>The expression is unique for a given truth table</li>
+                        <li>It is not minimized and may be complex</li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <p class="formula">
+                        F = A′B′C + AB′C + ABC′ + ABC
+                    </p>
+
+                    <p>
+                        Although canonical SOP accurately represents the function, it is inefficient for
+                        circuit implementation due to the large number of gates required.
+                    </p>
+                </section>
+
+                <section class="theory-section">
+                    <h3>Need for Boolean Minimization</h3>
+
+                    <p>Minimization of Boolean expressions is essential because it:</p>
+
+                    <ul>
+                        <li>Reduces the number of logic gates</li>
+                        <li>Decreases circuit complexity</li>
+                        <li>Lowers power consumption</li>
+                        <li>Improves speed and reliability</li>
+                        <li>Reduces hardware cost</li>
+                    </ul>
+
+                    <p>
+                        K-Maps offer an intuitive and reliable method to achieve minimization without complex
+                        Boolean algebra.
+                    </p>
+                </section>
+
+                <section class="theory-section">
+                    <h3>Karnaugh Map (K-Map)</h3>
+
+                    <p>
+                        A Karnaugh Map is a two-dimensional array of cells representing all possible combinations
+                        of Boolean variables. Each cell corresponds to a minterm.
+                    </p>
+
+                    <p>
+                        The arrangement of cells follows <strong>Gray Code ordering</strong>, ensuring that
+                        adjacent cells differ by only one variable. This adjacency property allows grouping of
+                        minterms to eliminate variables during simplification.
+                    </p>
+                </section>
+
+                <section class="theory-section">
+                    <h3>Gray Code Ordering</h3>
+
+                    <p>
+                        Gray Code is a binary numbering system in which consecutive values differ by only one bit.
+                    </p>
+
+                    <p class="formula">00, 01, 11, 10</p>
+
+                    <p>
+                        This ordering ensures that adjacent cells in the K-Map differ in only one variable,
+                        enabling valid grouping.
+                    </p>
+                </section>
+
+                <section class="theory-section">
+                    <h3>K-Map Construction</h3>
+
+                    <ul>
+                        <li><strong>2-Variable K-Map:</strong> 4 cells (2²), arranged in a 2 × 2 grid</li>
+                        <li><strong>3-Variable K-Map:</strong> 8 cells (2³), arranged in a 2 × 4 grid</li>
+                        <li><strong>4-Variable K-Map:</strong> 16 cells (2⁴), arranged in a 4 × 4 grid</li>
+                    </ul>
+                </section>
+
+                <section class="theory-section">
+                    <h3>Grouping Rules in K-Maps</h3>
+
+                    <ol>
+                        <li>Groups must contain 1, 2, 4, or 8 cells (powers of two)</li>
+                        <li>Groups can wrap around edges of the K-Map</li>
+                        <li>Each group eliminates one or more variables</li>
+                        <li>The largest possible groups are preferred</li>
+                        <li>Overlapping groups are allowed if they reduce complexity</li>
+                    </ol>
+                </section>
+
+                <section class="theory-section">
+                    <h3>Minimized Sum of Products (SOP)</h3>
+
+                    <p>After grouping:</p>
+
+                    <ul>
+                        <li>Variables that change within a group are eliminated</li>
+                        <li>Variables that remain constant form the simplified term</li>
+                        <li>The final expression is the OR of all group terms</li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <p class="formula">
+                        F = AB + AC + B′C
+                    </p>
+
+                    <p>
+                        This minimized expression uses fewer gates and is optimal for hardware implementation.
+                    </p>
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            Virtual Labs © 2025 | Applied Sciences & Humanities Department |
+            <strong>Pimpri Chinchwad College of Engineering</strong>
+        </p>
+    </footer>
+
+</body>
+
+</html>

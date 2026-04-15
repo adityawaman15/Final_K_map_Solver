@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | K-Map Solver</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+
+            <div class="logo-section">
+
+                <div class="pcce-logo-container">
+                    <img src="../assets/pccoe.png" alt="PCCOE Logo" class="pcce-logo-img">
+
+                    <div class="pcce-logo-text">
+                        <span class="main">APPLIED SCIENCES & HUMANITIES</span>
+                        <span class="sub">Pimpri Chinchwad College of Engineering</span>
+                    </div>
+                </div>
+
+                <div class="header-divider"></div>
+
+                <div class="virtual-labs-logo">
+                    <i class="fas fa-flask"></i>
+                    <h1>Virtual <span>Lab</span></h1>
+                </div>
+
+            </div>
+
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Welcome, Student</span>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="../home.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="aim.html" class="nav-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Aim</span>
+                </a>
+                <a href="theory.html" class="nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Theory</span>
+                </a>
+                <a href="pre-test.html" class="nav-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Pre-test</span>
+                </a>
+                <a href="assignment.html" class="nav-item">
+                    <i class="fa fa-check"></i>
+                    <span>Assignment</span>
+                </a>
+                <a href="simulation.html" class="nav-item">
+                    <i class="fas fa-desktop"></i>
+                    <span>Simulation</span>
+                </a>
+                <a href="post-test.html" class="nav-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Post-test</span>
+                </a>
+                <a href="reference.html" class="nav-item">
+                    <i class="fas fa-book-open"></i>
+                    <span>References</span>
+                </a>
+                <a href="contributors.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Contributors</span>
+                </a>
+                <a href="feedback.html" class="nav-item active">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>Feedback</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- feedback Content -->
+        <main class="container home-content">
+
+            <div class="content-header">
+                <h2>Feedback</h2>
+                <p>Help us improve your learning experience</p>
+            </div>
+
+            <div class="feedback-content-page">
+
+                <!-- Feedback Form -->
+                <div class="feedback-form-container">
+                    <div id="feedbackForm">
+
+                        <div class="form-group">
+                            <label for="studentName">
+                                <i class="fas fa-user"></i>
+                                Your Name
+                            </label>
+                            <input type="text" id="studentName" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentEmail">
+                                <i class="fas fa-envelope"></i>
+                                Email Address
+                            </label>
+                            <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentPRN">
+                                <i class="fas fa-id-card"></i>
+                                PRN Number
+                            </label>
+                            <input type="text" id="studentPRN" placeholder="Enter your PRN" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-star"></i>
+                                Overall Rating
+                            </label>
+                            <div class="rating-container">
+                                <div class="star-rating">
+                                    <input type="radio" id="star5" name="rating" value="5">
+                                    <label for="star5"><i class="fas fa-star"></i></label>
+
+                                    <input type="radio" id="star4" name="rating" value="4">
+                                    <label for="star4"><i class="fas fa-star"></i></label>
+
+                                    <input type="radio" id="star3" name="rating" value="3">
+                                    <label for="star3"><i class="fas fa-star"></i></label>
+
+                                    <input type="radio" id="star2" name="rating" value="2">
+                                    <label for="star2"><i class="fas fa-star"></i></label>
+
+                                    <input type="radio" id="star1" name="rating" value="1">
+                                    <label for="star1"><i class="fas fa-star"></i></label>
+                                </div>
+                                <span class="rating-text">Select your rating</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">
+                                <i class="fas fa-list"></i>
+                                Feedback Category
+                            </label>
+                            <select id="category" required>
+                                <option value="">Select a category</option>
+                                <option value="content">Content Quality</option>
+                                <option value="ui">User Interface</option>
+                                <option value="simulation">Simulation Experience</option>
+                                <option value="tests">Pre/Post Tests</option>
+                                <option value="overall">Overall Experience</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedbackMessage">
+                                <i class="fas fa-comment-dots"></i>
+                                Your Feedback
+                            </label>
+                            <textarea id="feedbackMessage" rows="6"
+                                placeholder="Share your thoughts, suggestions, or report any issues..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suggestions">
+                                <i class="fas fa-lightbulb"></i>
+                                Suggestions for Improvement (Optional)
+                            </label>
+                            <textarea id="suggestions" rows="4"
+                                placeholder="Any suggestions to make this virtual lab better?"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="submit-feedback-btn" onclick="submitFeedback()">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Feedback
+                            </button>
+                            <button type="button" class="reset-btn" onclick="resetForm()">
+                                <i class="fas fa-redo"></i>
+                                Reset Form
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thank You!</h3>
+                        <p>Your feedback has been submitted successfully. We appreciate your time and input!</p>
+                        <button onclick="submitAnother()" class="submit-another-btn">
+                            <i class="fas fa-plus"></i>
+                            Submit Another Feedback
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            Virtual Labs © 2025 | Applied Sciences & Humanities Department |
+            <strong>Pimpri Chinchwad College of Engineering</strong>
+        </p>
+    </footer>
+
+    <script>
+
+        const starLabels = document.querySelectorAll('.star-rating label');
+        const ratingText = document.querySelector('.rating-text');
+        const starInputs = document.querySelectorAll('.star-rating input');
+
+        starLabels.forEach((label, index) => {
+            label.addEventListener('click', function () {
+                const rating = 5 - index;
+                ratingText.textContent = rating + ' star' + (rating > 1 ? 's' : '') + ' selected';
+                ratingText.style.color = '#3498db';
+            });
+        });
+
+        // Submit feedback 
+        function submitFeedback() {
+            const name = document.getElementById('studentName').value.trim();
+            const email = document.getElementById('studentEmail').value.trim();
+            const prn = document.getElementById('studentPRN').value.trim();
+            const rating = document.querySelector('input[name="rating"]:checked');
+            const category = document.getElementById('category').value;
+            const message = document.getElementById('feedbackMessage').value.trim();
+            const suggestions = document.getElementById('suggestions').value.trim();
+
+            if (!name || !email || !prn || !rating || !category || !message) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.submit-feedback-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('prn', prn);
+            formData.append('rating', rating.value);
+            formData.append('category', category);
+            formData.append('message', message);
+            formData.append('suggestions', suggestions);
+
+            fetch('https://script.google.com/macros/s/AKfycbx8N37-ghQsIV2HdoeC9aGqRy8-9d-IMhTBZZlPtc5Q6JaQn9ufCDofzQ0uSA3X3nOW1g/exec', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('feedbackForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'flex';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Feedback';
+                    alert('There was an error submitting your feedback. Please try again.');
+                });
+        }
+
+        function submitAnother() {
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('feedbackForm').style.display = 'block';
+            resetForm();
+        }
+    </script>
+
+</body>
+
+</html>

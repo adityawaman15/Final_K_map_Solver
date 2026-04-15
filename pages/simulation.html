@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation | K-Map Solver</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+
+            <div class="logo-section">
+
+                <div class="pcce-logo-container">
+                    <img src="../assets/pccoe.png" alt="PCCOE Logo" class="pcce-logo-img">
+
+                    <div class="pcce-logo-text">
+                        <span class="main">APPLIED SCIENCES & HUMANITIES</span>
+                        <span class="sub">Pimpri Chinchwad College of Engineering</span>
+                    </div>
+                </div>
+
+                <div class="header-divider"></div>
+
+                <div class="virtual-labs-logo">
+                    <i class="fas fa-flask"></i>
+                    <h1>Virtual <span>Lab</span></h1>
+                </div>
+
+            </div>
+
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Welcome, Student</span>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+
+        <!-- Sidebar  -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="../home.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="aim.html" class="nav-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Aim</span>
+                </a>
+                <a href="theory.html" class="nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Theory</span>
+                </a>
+                <a href="pre-test.html" class="nav-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Pre-test</span>
+                </a>
+                <a href="assignment.html" class="nav-item">
+                    <i class="fa fa-check"></i>
+                    <span>Assignment</span>
+                </a>
+                <a href="simulation.html" class="nav-item active">
+                    <i class="fas fa-desktop"></i>
+                    <span>Simulation</span>
+                </a>
+                <a href="post-test.html" class="nav-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Post-test</span>
+                </a>
+                <a href="reference.html" class="nav-item">
+                    <i class="fas fa-book-open"></i>
+                    <span>References</span>
+                </a>
+                <a href="contributors.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Contributors</span>
+                </a>
+                <a href="feedback.html" class="nav-item">
+                    <i class="fas fa-comment-alt"></i>
+                    <span>Feedback</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- simulation Content -->
+        <main class="container home-content">
+
+            <div class="content-header">
+                <h2>K-Map Simulation</h2>
+                <p>Interactive Karnaugh Map solver and visualizer</p>
+            </div>
+
+            <div class="simulation-content">
+
+                <!-- Input Section -->
+                <div class="simulation-box">
+                    <h3><i class="fas fa-cogs"></i> Enter Values: </h3>
+
+                    <div class="sim-form-group">
+                        <label for="vars">
+                            <i class="fas fa-sliders-h"></i>
+                            Number of Variables
+                        </label>
+                        <select id="vars" onchange="updateMintermHint()">
+                            <option value="2">2 Variables (A, B)</option>
+                            <option value="3">3 Variables (A, B, C)</option>
+                            <option value="4">4 Variables (A, B, C, D)</option>
+                        </select>
+                    </div>
+
+                    <div class="sim-form-group">
+                        <label for="minterms">
+                            <i class="fas fa-list-ol"></i>
+                            Minterms (comma separated)
+                        </label>
+                        <input type="text" id="minterms" placeholder="Example: 1, 3, 5, 7">
+                        <small class="input-hint" id="mintermHint">Enter minterm numbers from 0 to 3 (for 2
+                            variables)</small>
+                    </div>
+
+                    <button class="solve-btn" onclick="solve()">
+                        <i class="fas fa-calculator"></i>
+                        Solve K-Map
+                    </button>
+
+                    <div class="error-message" id="errorMsg"></div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="resultsContainer" style="display: none;">
+
+                    <!-- Canonical Form -->
+                    <div class="result-box">
+                        <h3><i class="fas fa-formula"></i> Canonical Sum of Products (SOP)</h3>
+                        <div class="output-display" id="canonical"></div>
+                    </div>
+
+                    <!-- Minimized Form -->
+                    <div class="result-box minimized">
+                        <h3><i class="fas fa-compress-alt"></i> Minimized Expression</h3>
+                        <div class="output-display" id="minimized"></div>
+                    </div>
+
+                    <!-- K-Map Visualization -->
+                    <div class="result-box kmap-visual">
+                        <h3><i class="fas fa-table"></i> Karnaugh Map</h3>
+                        <div id="kmap"></div>
+                    </div>
+
+                    <!-- Logic Circuit -->
+                    <div class="result-box circuit-visual">
+                        <h3><i class="fas fa-project-diagram"></i> Logic Circuit</h3>
+                        <div id="circuit" class="circuit-canvas"></div>
+                    </div>
+
+                </div>
+
+                <div class="note-box" style="margin-top: 30px;">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Instructions:</strong>
+                        <ul style="margin: 10px 0 0 20px; padding: 0;">
+                            <li>Select the number of variables (2, 3, or 4)</li>
+                            <li>Enter minterms as comma-separated numbers</li>
+                            <li>Click "Solve K-Map" to generate the solution</li>
+                            <li>View the canonical form, minimized expression, and K-Map visualization</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            Virtual Labs © 2025 | Applied Sciences & Humanities Department |
+            <strong>Pimpri Chinchwad College of Engineering</strong>
+        </p>
+    </footer>
+
+    <script>
+
+        function updateMintermHint() {
+            const vars = parseInt(document.getElementById('vars').value);
+            const maxMinterm = Math.pow(2, vars) - 1;
+            const mintermHint = document.getElementById('mintermHint');
+
+            mintermHint.textContent = `Enter minterm numbers from 0 to ${maxMinterm} (for ${vars} variables)`;
+
+
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.style.display = 'none';
+        }
+
+        function solve() {
+            const vars = parseInt(document.getElementById('vars').value);
+            const mintermsInput = document.getElementById('minterms').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+            const resultsContainer = document.getElementById('resultsContainer');
+
+
+            errorMsg.style.display = 'none';
+            errorMsg.textContent = '';
+
+
+            if (!mintermsInput) {
+                errorMsg.textContent = 'Please enter minterms';
+                errorMsg.style.display = 'block';
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            const minterms = mintermsInput.split(',').map(m => parseInt(m.trim())).filter(m => !isNaN(m));
+
+            if (minterms.length === 0) {
+                errorMsg.textContent = 'Invalid minterms format';
+                errorMsg.style.display = 'block';
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            const maxMinterm = Math.pow(2, vars) - 1;
+            const invalidMinterms = minterms.filter(m => m < 0 || m > maxMinterm);
+            if (invalidMinterms.length > 0) {
+                errorMsg.textContent = `Invalid minterms: ${invalidMinterms.join(', ')}. For ${vars} variables, minterms must be between 0 and ${maxMinterm}`;
+                errorMsg.style.display = 'block';
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            const varNames = ['A', 'B', 'C', 'D'].slice(0, vars);
+            const canonical = minterms.map(m => {
+                let term = '';
+                for (let i = 0; i < vars; i++) {
+                    const bit = (m >> (vars - 1 - i)) & 1;
+                    term += bit ? varNames[i] : varNames[i] + "'";
+                }
+                return term;
+            }).join(' + ');
+
+            document.getElementById('canonical').textContent = canonical || '0';
+
+            const minimized = simplifyKMap(minterms, vars, varNames);
+            document.getElementById('minimized').textContent = minimized || '0';
+
+            generateKMap(minterms, vars, varNames);
+
+            generateCircuit(minimized, varNames);
+
+            resultsContainer.style.display = 'block';
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function simplifyKMap(minterms, vars, varNames) {
+
+            if (minterms.length === 0) return '0';
+            if (minterms.length === Math.pow(2, vars)) return '1';
+
+            const uniqueMinterms = [...new Set(minterms)].sort((a, b) => a - b);
+
+            let groups = [];
+            let used = new Set();
+
+            for (let i = 0; i < uniqueMinterms.length; i++) {
+                if (used.has(uniqueMinterms[i])) continue;
+
+                let group = [uniqueMinterms[i]];
+                for (let j = i + 1; j < uniqueMinterms.length; j++) {
+                    if (used.has(uniqueMinterms[j])) continue;
+                    if (canGroup(group[0], uniqueMinterms[j], vars)) {
+                        group.push(uniqueMinterms[j]);
+                        if (group.length === 4) break;
+                    }
+                }
+
+                if (group.length > 1) {
+                    groups.push(group);
+                    group.forEach(m => used.add(m));
+                }
+            }
+
+            uniqueMinterms.forEach(m => {
+                if (!used.has(m)) {
+                    groups.push([m]);
+                }
+            });
+
+            return groups.map(group => {
+                if (group.length === 1) {
+                    let term = '';
+                    const m = group[0];
+                    for (let i = 0; i < vars; i++) {
+                        const bit = (m >> (vars - 1 - i)) & 1;
+                        term += bit ? varNames[i] : varNames[i] + "'";
+                    }
+                    return term;
+                } else {
+
+                    let commonTerm = '';
+                    for (let i = 0; i < vars; i++) {
+                        const bits = group.map(m => (m >> (vars - 1 - i)) & 1);
+                        if (bits.every(b => b === bits[0])) {
+                            commonTerm += bits[0] ? varNames[i] : varNames[i] + "'";
+                        }
+                    }
+                    return commonTerm || '1';
+                }
+            }).join(' + ');
+        }
+
+        function canGroup(m1, m2, vars) {
+            const xor = m1 ^ m2;
+            return xor !== 0 && (xor & (xor - 1)) === 0;
+        }
+
+        function generateKMap(minterms, vars, varNames) {
+            const kmapDiv = document.getElementById('kmap');
+            const mintermSet = new Set(minterms);
+
+            let table = '<table class="kmap-table">';
+
+            if (vars === 2) {
+
+                table += '<tr><th></th><th>B=0</th><th>B=1</th></tr>';
+                table += '<tr><th>A=0</th>';
+                table += `<td class="${mintermSet.has(0) ? 'one' : ''}">0</td>`;
+                table += `<td class="${mintermSet.has(1) ? 'one' : ''}">1</td>`;
+                table += '</tr><tr><th>A=1</th>';
+                table += `<td class="${mintermSet.has(2) ? 'one' : ''}">2</td>`;
+                table += `<td class="${mintermSet.has(3) ? 'one' : ''}">3</td>`;
+                table += '</tr>';
+            } else if (vars === 3) {
+                // 2x4 K-Map
+                table += '<tr><th></th><th>BC=00</th><th>BC=01</th><th>BC=11</th><th>BC=10</th></tr>';
+                table += '<tr><th>A=0</th>';
+                [0, 1, 3, 2].forEach(m => {
+                    table += `<td class="${mintermSet.has(m) ? 'one' : ''}">${m}</td>`;
+                });
+                table += '</tr><tr><th>A=1</th>';
+                [4, 5, 7, 6].forEach(m => {
+                    table += `<td class="${mintermSet.has(m) ? 'one' : ''}">${m}</td>`;
+                });
+                table += '</tr>';
+            } else if (vars === 4) {
+                // 4x4 K-Map
+                table += '<tr><th></th><th>CD=00</th><th>CD=01</th><th>CD=11</th><th>CD=10</th></tr>';
+                const rows = [
+                    { label: 'AB=00', values: [0, 1, 3, 2] },
+                    { label: 'AB=01', values: [4, 5, 7, 6] },
+                    { label: 'AB=11', values: [12, 13, 15, 14] },
+                    { label: 'AB=10', values: [8, 9, 11, 10] }
+                ];
+                rows.forEach(row => {
+                    table += `<tr><th>${row.label}</th>`;
+                    row.values.forEach(m => {
+                        table += `<td class="${mintermSet.has(m) ? 'one' : ''}">${m}</td>`;
+                    });
+                    table += '</tr>';
+                });
+            }
+
+            table += '</table>';
+            kmapDiv.innerHTML = table;
+        }
+
+        function generateCircuit(expression, varNames) {
+            const circuitDiv = document.getElementById('circuit');
+
+            if (!expression || expression === '0') {
+                circuitDiv.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 20px;">No circuit needed (output is always 0)</p>';
+                return;
+            }
+
+            if (expression === '1') {
+                circuitDiv.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 20px;">Direct connection (output is always 1)</p>';
+                return;
+            }
+
+
+            const terms = expression.split(' + ').map(t => t.trim());
+
+            const svgWidth = 800;
+            const svgHeight = Math.max(300, 100 + terms.length * 80);
+
+            let svg = `<svg width="${svgWidth}" height="${svgHeight}" style="border: 1px solid #e0e0e0; border-radius: 8px; background: white;">`;
+
+
+            const inputs = {};
+            let inputY = 60;
+            varNames.forEach((varName, idx) => {
+
+                svg += `<line x1="30" y1="${inputY}" x2="100" y2="${inputY}" stroke="#2c3e50" stroke-width="2"/>`;
+                svg += `<text x="10" y="${inputY + 5}" font-size="16" font-weight="bold" fill="#2c3e50">${varName}</text>`;
+                inputs[varName] = inputY;
+
+                svg += `<line x1="30" y1="${inputY + 30}" x2="100" y2="${inputY + 30}" stroke="#2c3e50" stroke-width="2"/>`;
+                svg += `<circle cx="95" cy="${inputY + 30}" r="5" fill="white" stroke="#2c3e50" stroke-width="2"/>`;
+                svg += `<text x="10" y="${inputY + 35}" font-size="16" font-weight="bold" fill="#2c3e50">${varName}'</text>`;
+                inputs[varName + "'"] = inputY + 30;
+
+                inputY += 80;
+            });
+
+            let andGateY = 80;
+            const andOutputs = [];
+
+            terms.forEach((term, termIdx) => {
+                if (term === '1') {
+
+                    andOutputs.push({ y: andGateY, isOne: true });
+                    andGateY += 80;
+                    return;
+                }
+
+                const literals = [];
+                let i = 0;
+                while (i < term.length) {
+                    if (i < term.length - 1 && term[i + 1] === "'") {
+                        literals.push(term[i] + "'");
+                        i += 2;
+                    } else {
+                        literals.push(term[i]);
+                        i++;
+                    }
+                }
+
+                const andX = 250;
+                const andY = andGateY;
+
+                svg += `<rect x="${andX}" y="${andY - 30}" width="60" height="60" fill="#e8f4fc" stroke="#3498db" stroke-width="2" rx="5"/>`;
+                svg += `<text x="${andX + 30}" y="${andY + 5}" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle">AND</text>`;
+
+                literals.forEach((lit, litIdx) => {
+                    const inputY = inputs[lit];
+                    const gateInputY = andY - 20 + (litIdx * 40 / Math.max(1, literals.length - 1));
+
+                    svg += `<line x1="100" y1="${inputY}" x2="250" y2="${gateInputY}" stroke="#3498db" stroke-width="2"/>`;
+                });
+
+
+                svg += `<line x1="${andX + 60}" y1="${andY}" x2="${andX + 120}" y2="${andY}" stroke="#3498db" stroke-width="2"/>`;
+
+                andOutputs.push({ y: andY, isOne: false });
+                andGateY += 80;
+            });
+
+
+            if (terms.length > 1) {
+                const orX = 450;
+                const orY = svgHeight / 2;
+
+                svg += `<path d="M ${orX} ${orY - 40} Q ${orX + 20} ${orY - 40} ${orX + 40} ${orY - 20} L ${orX + 40} ${orY + 20} Q ${orX + 20} ${orY + 40} ${orX} ${orY + 40} Q ${orX + 30} ${orY} ${orX} ${orY - 40}" fill="#fff4e6" stroke="#f39c12" stroke-width="2"/>`;
+                svg += `<text x="${orX + 20}" y="${orY + 5}" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle">OR</text>`;
+
+
+                andOutputs.forEach((output, idx) => {
+                    const fromX = 370;
+                    const fromY = output.y;
+                    const toY = orY - 30 + (idx * 60 / Math.max(1, andOutputs.length - 1));
+
+                    svg += `<line x1="${fromX}" y1="${fromY}" x2="${orX}" y2="${toY}" stroke="#f39c12" stroke-width="2"/>`;
+                });
+
+
+                svg += `<line x1="${orX + 40}" y1="${orY}" x2="${orX + 120}" y2="${orY}" stroke="#27ae60" stroke-width="3"/>`;
+                svg += `<text x="${orX + 140}" y="${orY + 5}" font-size="18" font-weight="bold" fill="#27ae60">F</text>`;
+            } else {
+
+                const outputY = andOutputs[0].y;
+                svg += `<line x1="370" y1="${outputY}" x2="500" y2="${outputY}" stroke="#27ae60" stroke-width="3"/>`;
+                svg += `<text x="520" y="${outputY + 5}" font-size="18" font-weight="bold" fill="#27ae60">F</text>`;
+            }
+
+            svg += '</svg>';
+
+            circuitDiv.innerHTML = svg;
+
+            circuitDiv.innerHTML += `<div class="circuit-description">
+        <p><strong>Circuit Components:</strong></p>
+        <ul>
+            <li><strong>Inputs:</strong> ${varNames.join(', ')} (and their complements)</li>
+            <li><strong>AND Gates:</strong> ${terms.length} gate(s) for product terms</li>
+            <li><strong>OR Gate:</strong> ${terms.length > 1 ? '1 gate to combine all terms' : 'Not needed (single term)'}</li>
+            <li><strong>Output:</strong> F = ${expression}</li>
+        </ul>
+    </div>`;
+        }
+    </script>
+
+</body>
+
+</html>
