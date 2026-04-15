@@ -1,389 +1,506 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post-test | K-Map Solver</title>
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="main-header">
-        <div class="header-container">
+<!-- ===== HEADER ===== -->
+<header class="main-header">
+    <div class="header-container">
 
-            <div class="logo-section">
+        <!-- College Info -->
+        <div class="logo-section">
 
-                <div class="pcce-logo-container">
-                    <img src="../assets/pccoe.png" alt="PCCOE Logo" class="pcce-logo-img">
-
-                    <div class="pcce-logo-text">
-                        <span class="main">APPLIED SCIENCES & HUMANITIES</span>
-                        <span class="sub">Pimpri Chinchwad College of Engineering</span>
-                    </div>
+            <div class="pcce-logo-container">
+                <img src="../assets/pccoe.png" alt="PCCOE Logo" class="pcce-logo-img">
+            
+                <div class="pcce-logo-text">
+                    <span class="main">APPLIED SCIENCES & HUMANITIES</span>
+                    <span class="sub">Pimpri Chinchwad College of Engineering</span>
                 </div>
-
-                <div class="header-divider"></div>
-
-                <div class="virtual-labs-logo">
-                    <i class="fas fa-flask"></i>
-                    <h1>Virtual <span>Lab</span></h1>
-                </div>
-
             </div>
 
-            <div class="user-info">
-                <i class="fas fa-user-circle"></i>
-                <span>Welcome, Student</span>
+            <div class="header-divider"></div>
+        
+            <!-- Virtual Labs -->
+            <div class="virtual-labs-logo">
+                <i class="fas fa-flask"></i>
+                <h1>Virtual <span>Lab</span></h1>
             </div>
 
         </div>
-    </header>
 
-    <div class="page-wrapper">
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <a href="../home.html" class="nav-item">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-                <a href="aim.html" class="nav-item">
-                    <i class="fas fa-bullseye"></i>
-                    <span>Aim</span>
-                </a>
-                <a href="theory.html" class="nav-item">
-                    <i class="fas fa-book"></i>
-                    <span>Theory</span>
-                </a>
-                <a href="pre-test.html" class="nav-item">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Pre-test</span>
-                </a>
-                <a href="assignment.html" class="nav-item">
-                    <i class="fa fa-check"></i>
-                    <span>Assignment</span>
-                </a>
-                <a href="simulation.html" class="nav-item">
-                    <i class="fas fa-desktop"></i>
-                    <span>Simulation</span>
-                </a>
-                <a href="post-test.html" class="nav-item active">
-                    <i class="fas fa-clipboard-check"></i>
-                    <span>Post-test</span>
-                </a>
-                <a href="reference.html" class="nav-item">
-                    <i class="fas fa-book-open"></i>
-                    <span>References</span>
-                </a>
-                <a href="contributors.html" class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>Contributors</span>
-                </a>
-                <a href="feedback.html" class="nav-item">
-                    <i class="fas fa-comment-alt"></i>
-                    <span>Feedback</span>
-                </a>
-            </nav>
-        </aside>
-
-        <!-- Post-test Content -->
-        <main class="container home-content">
-
-            <div class="content-header">
-                <h2>Post-test</h2>
-                <p>Evaluate your learning after completing the experiment</p>
-            </div>
-
-            <div class="pretest-content">
-
-                <div id="quiz-container">
-
-                    <div class="question-card" data-question="1">
-                        <div class="question-header">
-                            <span class="question-number">Question 1</span>
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <p class="question-text">
-                            The primary purpose of a Karnaugh Map (K-Map) is:
-                        </p>
-                        <ul class="options-list">
-                            <li class="option" data-answer="A" onclick="selectOption(1, 'A', false)">
-                                <span class="option-label">A)</span>
-                                <span>To draw digital circuits physically</span>
-                            </li>
-                            <li class="option" data-answer="B" onclick="selectOption(1, 'B', true)">
-                                <span class="option-label">B)</span>
-                                <span>To simplify Boolean expressions</span>
-                            </li>
-                            <li class="option" data-answer="C" onclick="selectOption(1, 'C', false)">
-                                <span class="option-label">C)</span>
-                                <span>To convert decimal numbers to binary</span>
-                            </li>
-                            <li class="option" data-answer="D" onclick="selectOption(1, 'D', false)">
-                                <span class="option-label">D)</span>
-                                <span>To calculate arithmetic operations</span>
-                            </li>
-                        </ul>
-                        <div class="feedback" style="display: none;"></div>
-                    </div>
-
-                    <div class="question-card" data-question="2">
-                        <div class="question-header">
-                            <span class="question-number">Question 2</span>
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <p class="question-text">
-                            How many cells does a 4-variable K-Map have?
-                        </p>
-                        <ul class="options-list">
-                            <li class="option" data-answer="A" onclick="selectOption(2, 'A', false)">
-                                <span class="option-label">A)</span>
-                                <span>4</span>
-                            </li>
-                            <li class="option" data-answer="B" onclick="selectOption(2, 'B', false)">
-                                <span class="option-label">B)</span>
-                                <span>8</span>
-                            </li>
-                            <li class="option" data-answer="C" onclick="selectOption(2, 'C', true)">
-                                <span class="option-label">C)</span>
-                                <span>16</span>
-                            </li>
-                            <li class="option" data-answer="D" onclick="selectOption(2, 'D', false)">
-                                <span class="option-label">D)</span>
-                                <span>32</span>
-                            </li>
-                        </ul>
-                        <div class="feedback" style="display: none;"></div>
-                    </div>
-
-                    <div class="question-card" data-question="3">
-                        <div class="question-header">
-                            <span class="question-number">Question 3</span>
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <p class="question-text">
-                            In a 3-variable K-Map, which minterm is valid?
-                        </p>
-                        <ul class="options-list">
-                            <li class="option" data-answer="A" onclick="selectOption(3, 'A', true)">
-                                <span class="option-label">A)</span>
-                                <span>7</span>
-                            </li>
-                            <li class="option" data-answer="B" onclick="selectOption(3, 'B', false)">
-                                <span class="option-label">B)</span>
-                                <span>8</span>
-                            </li>
-                            <li class="option" data-answer="C" onclick="selectOption(3, 'C', false)">
-                                <span class="option-label">C)</span>
-                                <span>9</span>
-                            </li>
-                            <li class="option" data-answer="D" onclick="selectOption(3, 'D', false)">
-                                <span class="option-label">D)</span>
-                                <span>12</span>
-                            </li>
-                        </ul>
-                        <div class="feedback" style="display: none;"></div>
-                    </div>
-
-                    <div class="question-card" data-question="4">
-                        <div class="question-header">
-                            <span class="question-number">Question 4</span>
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <p class="question-text">
-                            What does a '0' in a K-Map cell indicate?
-                        </p>
-                        <ul class="options-list">
-                            <li class="option" data-answer="A" onclick="selectOption(4, 'A', true)">
-                                <span class="option-label">A)</span>
-                                <span>The minterm makes the function false</span>
-                            </li>
-                            <li class="option" data-answer="B" onclick="selectOption(4, 'B', false)">
-                                <span class="option-label">B)</span>
-                                <span>The variable is redundant</span>
-                            </li>
-                            <li class="option" data-answer="C" onclick="selectOption(4, 'C', false)">
-                                <span class="option-label">C)</span>
-                                <span>An invalid minterm</span>
-                            </li>
-                            <li class="option" data-answer="D" onclick="selectOption(4, 'D', false)">
-                                <span class="option-label">D)</span>
-                                <span>The minterm makes the function true</span>
-                            </li>
-                        </ul>
-                        <div class="feedback" style="display: none;"></div>
-                    </div>
-
-                </div>
-
-                <div class="submit-section">
-                    <button class="submit-btn" onclick="submitQuiz()">
-                        <i class="fas fa-paper-plane"></i>
-                        Submit Test
-                    </button>
-                </div>
-
-                <div id="results-section" style="display: none;">
-                    <div class="results-card">
-                        <div class="results-header">
-                            <i class="fas fa-trophy"></i>
-                            <h3>Test Results</h3>
-                        </div>
-                        <div class="results-body">
-                            <div class="score-display">
-                                <span class="score-label">Your Score:</span>
-                                <span class="score-value" id="score-value">0/4</span>
-                            </div>
-                            <div class="score-percentage" id="score-percentage">0%</div>
-                            <p class="score-message" id="score-message"></p>
-                        </div>
-                        <div class="results-actions">
-                            <button class="retry-btn" onclick="retryQuiz()">
-                                <i class="fas fa-redo"></i>
-                                Retry Test
-                            </button>
-                            <a href="simulation.html" class="review-btn">
-                                <i class="fas fa-desktop"></i>
-                                Review Simulation
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </main>
+        <!-- User Info -->
+        <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <span>Welcome, Student</span>
+        </div>
 
     </div>
+</header>
 
-    <!----> FOOTER -->
-    <footer>
-        <p>
-            Virtual Labs © 2025 | Applied Sciences & Humanities Department |
-            <strong>Pimpri Chinchwad College of Engineering</strong>
-        </p>
-    </footer>
+<!-- ===== PAGE WRAPPER WITH SIDEBAR ===== -->
+<div class="page-wrapper">
 
-    <script>
-        let userAnswers = {};
-        let totalQuestions = 4;
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <a href="../home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="aim.html" class="nav-item">
+                <i class="fas fa-bullseye"></i>
+                <span>Aim</span>
+            </a>
+            <a href="theory.html" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Theory</span>
+            </a>
+            <a href="pre-test.html" class="nav-item">
+                <i class="fas fa-question-circle"></i>
+                <span>Pre-test</span>
+            </a>
+            <a href="simulation.html" class="nav-item">
+                <i class="fas fa-desktop"></i>
+                <span>Simulation</span>
+            </a>
+            <a href="post-test.html" class="nav-item active">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Post-test</span>
+            </a>
+            <a href="reference.html" class="nav-item">
+                <i class="fas fa-book-open"></i>
+                <span>References</span>
+            </a>
+            <a href="contributors.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Contributors</span>
+            </a>
+            <a href="feedback.html" class="nav-item">
+                <i class="fas fa-comment-alt"></i>
+                <span>Feedback</span>
+            </a>
+        </nav>
+    </aside>
 
-        function selectOption(questionNum, answer, isCorrect) {
+    <!-- Main Content -->
+    <main class="container home-content">
 
-            const questionCard = document.querySelector(`[data-question="${questionNum}"]`);
+        <div class="content-header">
+            <h2>Post-test</h2>
+            <p>Evaluate your learning after completing the experiment</p>
+        </div>
+
+        <!-- Post-test Content -->
+        <div class="pretest-content">
+
+            <!-- Quiz Container -->
+            <div id="quiz-container">
+
+                <div class="question-card" data-question="1">
+                    <div class="question-header">
+                        <span class="question-number">Question 1</span>
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <p class="question-text">
+                        The primary purpose of a Karnaugh Map (K-Map) is:
+                    </p>
+                    <ul class="options-list">
+                        <li class="option" data-answer="A" onclick="selectOption(1, 'A', false)">
+                            <span class="option-label">A)</span>
+                            <span>To draw digital circuits physically</span>
+                        </li>
+                        <li class="option" data-answer="B" onclick="selectOption(1, 'B', true)">
+                            <span class="option-label">B)</span>
+                            <span>To simplify Boolean expressions</span>
+                        </li>
+                        <li class="option" data-answer="C" onclick="selectOption(1, 'C', false)">
+                            <span class="option-label">C)</span>
+                            <span>To convert decimal numbers to binary</span>
+                        </li>
+                        <li class="option" data-answer="D" onclick="selectOption(1, 'D', false)">
+                            <span class="option-label">D)</span>
+                            <span>To calculate arithmetic operations</span>
+                        </li>
+                    </ul>
+                    <div class="feedback" style="display: none;"></div>
+                </div>
+
+                <div class="question-card" data-question="2">
+                    <div class="question-header">
+                        <span class="question-number">Question 2</span>
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <p class="question-text">
+                        How many cells does a 4-variable K-Map have?
+                    </p>
+                    <ul class="options-list">
+                        <li class="option" data-answer="A" onclick="selectOption(2, 'A', false)">
+                            <span class="option-label">A)</span>
+                            <span>4</span>
+                        </li>
+                        <li class="option" data-answer="B" onclick="selectOption(2, 'B', false)">
+                            <span class="option-label">B)</span>
+                            <span>8</span>
+                        </li>
+                        <li class="option" data-answer="C" onclick="selectOption(2, 'C', true)">
+                            <span class="option-label">C)</span>
+                            <span>16</span>
+                        </li>
+                        <li class="option" data-answer="D" onclick="selectOption(2, 'D', false)">
+                            <span class="option-label">D)</span>
+                            <span>32</span>
+                        </li>
+                    </ul>
+                    <div class="feedback" style="display: none;"></div>
+                </div>
+
+                <div class="question-card" data-question="3">
+                    <div class="question-header">
+                        <span class="question-number">Question 3</span>
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <p class="question-text">
+                        In a 3-variable K-Map, which minterm is valid?
+                    </p>
+                    <ul class="options-list">
+                        <li class="option" data-answer="A" onclick="selectOption(3, 'A', true)">
+                            <span class="option-label">A)</span>
+                            <span>7</span>
+                        </li>
+                        <li class="option" data-answer="B" onclick="selectOption(3, 'B', false)">
+                            <span class="option-label">B)</span>
+                            <span>8</span>
+                        </li>
+                        <li class="option" data-answer="C" onclick="selectOption(3, 'C', false)">
+                            <span class="option-label">C)</span>
+                            <span>9</span>
+                        </li>
+                        <li class="option" data-answer="D" onclick="selectOption(3, 'D', false)">
+                            <span class="option-label">D)</span>
+                            <span>12</span>
+                        </li>
+                    </ul>
+                    <div class="feedback" style="display: none;"></div>
+                </div>
+
+                <div class="question-card" data-question="4">
+                    <div class="question-header">
+                        <span class="question-number">Question 4</span>
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <p class="question-text">
+                        What does a '0' in a K-Map cell indicate?
+                    </p>
+                    <ul class="options-list">
+                        <li class="option" data-answer="A" onclick="selectOption(4, 'A', true)">
+                            <span class="option-label">A)</span>
+                            <span>The minterm makes the function false</span>
+                        </li>
+                        <li class="option" data-answer="B" onclick="selectOption(4, 'B', false)">
+                            <span class="option-label">B)</span>
+                            <span>The variable is redundant</span>
+                        </li>
+                        <li class="option" data-answer="C" onclick="selectOption(4, 'C', false)">
+                            <span class="option-label">C)</span>
+                            <span>An invalid minterm</span>
+                        </li>
+                        <li class="option" data-answer="D" onclick="selectOption(4, 'D', false)">
+                            <span class="option-label">D)</span>
+                            <span>The minterm makes the function true</span>
+                        </li>
+                    </ul>
+                    <div class="feedback" style="display: none;"></div>
+                </div>
+
+                <div class="question-card" data-question="5">
+    <div class="question-header">
+        <span class="question-number">Question 5</span>
+        <i class="fas fa-clipboard-check"></i>
+    </div>
+    <p class="question-text">
+        In a K-Map, grouping of cells should always be in powers of:
+    </p>
+    <ul class="options-list">
+        <li class="option" data-answer="A" onclick="selectOption(5, 'A', false)">A) 3</li>
+        <li class="option" data-answer="B" onclick="selectOption(5, 'B', true)">B) 2</li>
+        <li class="option" data-answer="C" onclick="selectOption(5, 'C', false)">C) 5</li>
+        <li class="option" data-answer="D" onclick="selectOption(5, 'D', false)">D) 10</li>
+    </ul>
+    <div class="feedback" style="display: none;"></div>
+</div>
+
+<div class="question-card" data-question="6">
+    <div class="question-header">
+        <span class="question-number">Question 6</span>
+        <i class="fas fa-clipboard-check"></i>
+    </div>
+    <p class="question-text">
+        Adjacent cells in a K-Map differ by how many variables?
+    </p>
+    <ul class="options-list">
+        <li class="option" data-answer="A" onclick="selectOption(6, 'A', true)">A) 1</li>
+        <li class="option" data-answer="B" onclick="selectOption(6, 'B', false)">B) 2</li>
+        <li class="option" data-answer="C" onclick="selectOption(6, 'C', false)">C) 3</li>
+        <li class="option" data-answer="D" onclick="selectOption(6, 'D', false)">D) 4</li>
+    </ul>
+    <div class="feedback" style="display: none;"></div>
+</div>
+
+<div class="question-card" data-question="7">
+    <div class="question-header">
+        <span class="question-number">Question 7</span>
+        <i class="fas fa-clipboard-check"></i>
+    </div>
+    <p class="question-text">
+        What is the maximum group size in a 4-variable K-Map?
+    </p>
+    <ul class="options-list">
+        <li class="option" data-answer="A" onclick="selectOption(7, 'A', false)">A) 8</li>
+        <li class="option" data-answer="B" onclick="selectOption(7, 'B', true)">B) 16</li>
+        <li class="option" data-answer="C" onclick="selectOption(7, 'C', false)">C) 4</li>
+        <li class="option" data-answer="D" onclick="selectOption(7, 'D', false)">D) 32</li>
+    </ul>
+    <div class="feedback" style="display: none;"></div>
+</div>
+
+<div class="question-card" data-question="8">
+    <div class="question-header">
+        <span class="question-number">Question 8</span>
+        <i class="fas fa-clipboard-check"></i>
+    </div>
+    <p class="question-text">
+        Wrapping around edges in a K-Map means:
+    </p>
+    <ul class="options-list">
+        <li class="option" data-answer="A" onclick="selectOption(8, 'A', true)">A) Edges are adjacent</li>
+        <li class="option" data-answer="B" onclick="selectOption(8, 'B', false)">B) Edges are ignored</li>
+        <li class="option" data-answer="C" onclick="selectOption(8, 'C', false)">C) Only corners are used</li>
+        <li class="option" data-answer="D" onclick="selectOption(8, 'D', false)">D) Only rows matter</li>
+    </ul>
+    <div class="feedback" style="display: none;"></div>
+</div>
+
+<div class="question-card" data-question="9">
+    <div class="question-header">
+        <span class="question-number">Question 9</span>
+        <i class="fas fa-clipboard-check"></i>
+    </div>
+    <p class="question-text">
+        What is a "don't care" condition in K-Map?
+    </p>
+    <ul class="options-list">
+        <li class="option" data-answer="A" onclick="selectOption(9, 'A', false)">A) Always 0</li>
+        <li class="option" data-answer="B" onclick="selectOption(9, 'B', false)">B) Always 1</li>
+        <li class="option" data-answer="C" onclick="selectOption(9, 'C', true)">C) Can be 0 or 1</li>
+        <li class="option" data-answer="D" onclick="selectOption(9, 'D', false)">D) Invalid input</li>
+    </ul>
+    <div class="feedback" style="display: none;"></div>
+</div>
+
+<div class="question-card" data-question="10">
+    <div class="question-header">
+        <span class="question-number">Question 10</span>
+        <i class="fas fa-clipboard-check"></i>
+    </div>
+    <p class="question-text">
+        K-Map simplification reduces:
+    </p>
+    <ul class="options-list">
+        <li class="option" data-answer="A" onclick="selectOption(10, 'A', false)">A) Number of variables</li>
+        <li class="option" data-answer="B" onclick="selectOption(10, 'B', true)">B) Logic complexity</li>
+        <li class="option" data-answer="C" onclick="selectOption(10, 'C', false)">C) Input values</li>
+        <li class="option" data-answer="D" onclick="selectOption(10, 'D', false)">D) Truth table size</li>
+    </ul>
+    <div class="feedback" style="display: none;"></div>
+</div>
+
+            </div>
+            
+
+            <!-- Submit Button -->
+            <div class="submit-section">
+                <button class="submit-btn" onclick="submitQuiz()">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Test
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-section" style="display: none;">
+                <div class="results-card">
+                    <div class="results-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Test Results</h3>
+                    </div>
+                    <div class="results-body">
+                        <div class="score-display">
+                            <span class="score-label">Your Score:</span>
+                            <span class="score-value" id="score-value">0/4</span>
+                        </div>
+                        <div class="score-percentage" id="score-percentage">0%</div>
+                        <p class="score-message" id="score-message"></p>
+                    </div>
+                    <div class="results-actions">
+                        <button class="retry-btn" onclick="retryQuiz()">
+                            <i class="fas fa-redo"></i>
+                            Retry Test
+                        </button>
+                        <a href="simulation.html" class="review-btn">
+                            <i class="fas fa-desktop"></i>
+                            Review Simulation
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <p>
+        Virtual Labs © 2025 | Applied Sciences & Humanities Department |
+        <strong>Pimpri Chinchwad College of Engineering</strong>
+    </p>
+</footer>
+
+<script>
+    // Store user answers
+    let userAnswers = {};
+    let totalQuestions = 10;
+
+    function selectOption(questionNum, answer, isCorrect) {
+        // Get all options for this question
+        const questionCard = document.querySelector(`[data-question="${questionNum}"]`);
+        const options = questionCard.querySelectorAll('.option');
+        
+        // Remove selected class from all options
+        options.forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        
+        // Add selected class to clicked option
+        const selectedOption = questionCard.querySelector(`[data-answer="${answer}"]`);
+        selectedOption.classList.add('selected');
+        
+        // Store the answer
+        userAnswers[questionNum] = {
+            selected: answer,
+            isCorrect: isCorrect
+        };
+    }
+
+    function submitQuiz() {
+        // Check if all questions are answered
+        if (Object.keys(userAnswers).length < totalQuestions) {
+            alert('Please answer all questions before submitting!');
+            return;
+        }
+
+        // Calculate score
+        let correctCount = 0;
+        for (let q in userAnswers) {
+            if (userAnswers[q].isCorrect) {
+                correctCount++;
+            }
+        }
+
+        // Show correct/incorrect feedback
+        for (let i = 1; i <= totalQuestions; i++) {
+            const questionCard = document.querySelector(`[data-question="${i}"]`);
             const options = questionCard.querySelectorAll('.option');
-
-
+            const feedback = questionCard.querySelector('.feedback');
+            
             options.forEach(opt => {
-                opt.classList.remove('selected');
+                opt.style.pointerEvents = 'none'; // Disable clicking
+                
+                // Highlight correct answer
+                const answer = opt.getAttribute('data-answer');
+                const isCorrect = opt.onclick.toString().includes('true');
+                
+                if (isCorrect) {
+                    opt.classList.add('correct-answer');
+                }
+                
+                // Show if user's answer was wrong
+                if (opt.classList.contains('selected') && !userAnswers[i].isCorrect) {
+                    opt.classList.add('wrong-answer');
+                }
             });
 
-
-            const selectedOption = questionCard.querySelector(`[data-answer="${answer}"]`);
-            selectedOption.classList.add('selected');
-
-            userAnswers[questionNum] = {
-                selected: answer,
-                isCorrect: isCorrect
-            };
-        }
-
-        function submitQuiz() {
-
-            if (Object.keys(userAnswers).length < totalQuestions) {
-                alert('Please answer all questions before submitting!');
-                return;
-            }
-
-            let correctCount = 0;
-            for (let q in userAnswers) {
-                if (userAnswers[q].isCorrect) {
-                    correctCount++;
-                }
-            }
-
-            for (let i = 1; i <= totalQuestions; i++) {
-                const questionCard = document.querySelector(`[data-question="${i}"]`);
-                const options = questionCard.querySelectorAll('.option');
-                const feedback = questionCard.querySelector('.feedback');
-
-                options.forEach(opt => {
-                    opt.style.pointerEvents = 'none';
-
-                    const answer = opt.getAttribute('data-answer');
-                    const isCorrect = opt.onclick.toString().includes('true');
-
-                    if (isCorrect) {
-                        opt.classList.add('correct-answer');
-                    }
-
-                    if (opt.classList.contains('selected') && !userAnswers[i].isCorrect) {
-                        opt.classList.add('wrong-answer');
-                    }
-                });
-
-                if (userAnswers[i].isCorrect) {
-                    feedback.innerHTML = '<i class="fas fa-check-circle"></i> Correct!';
-                    feedback.className = 'feedback correct-feedback';
-                } else {
-                    feedback.innerHTML = '<i class="fas fa-times-circle"></i> Incorrect';
-                    feedback.className = 'feedback wrong-feedback';
-                }
-                feedback.style.display = 'block';
-            }
-
-            // Display results
-            const percentage = (correctCount / totalQuestions) * 100;
-            document.getElementById('score-value').textContent = `${correctCount}/${totalQuestions}`;
-            document.getElementById('score-percentage').textContent = `${percentage.toFixed(0)}%`;
-
-            let message = '';
-            if (percentage >= 80) {
-                message = '🎉 Outstanding! You have mastered K-Map concepts!';
-            } else if (percentage >= 60) {
-                message = '👍 Good work! Review the simulation for better understanding.';
+            // Show feedback
+            if (userAnswers[i].isCorrect) {
+                feedback.innerHTML = '<i class="fas fa-check-circle"></i> Correct!';
+                feedback.className = 'feedback correct-feedback';
             } else {
-                message = '📚 Keep learning! Try the simulation again and review theory.';
+                feedback.innerHTML = '<i class="fas fa-times-circle"></i> Incorrect';
+                feedback.className = 'feedback wrong-feedback';
             }
-            document.getElementById('score-message').textContent = message;
-
-            document.querySelector('.submit-section').style.display = 'none';
-            document.getElementById('results-section').style.display = 'block';
-
-
-            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            feedback.style.display = 'block';
         }
 
-        function retryQuiz() {
+        // Display results
+        const percentage = (correctCount / totalQuestions) * 100;
+        document.getElementById('score-value').textContent = `${correctCount}/${totalQuestions}`;
+        document.getElementById('score-percentage').textContent = `${percentage.toFixed(0)}%`;
+        
+        let message = '';
+        if (percentage >= 80) {
+            message = '🎉 Outstanding! You have mastered K-Map concepts!';
+        } else if (percentage >= 60) {
+            message = '👍 Good work! Review the simulation for better understanding.';
+        } else {
+            message = '📚 Keep learning! Try the simulation again and review theory.';
+        }
+        document.getElementById('score-message').textContent = message;
 
-            userAnswers = {};
+        // Hide submit button and show results
+        document.querySelector('.submit-section').style.display = 'none';
+        document.getElementById('results-section').style.display = 'block';
 
+        // Scroll to results
+        document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
-            document.querySelectorAll('.question-card').forEach(card => {
-                const options = card.querySelectorAll('.option');
-                options.forEach(opt => {
-                    opt.classList.remove('selected', 'correct-answer', 'wrong-answer');
-                    opt.style.pointerEvents = 'auto';
-                });
-
-                const feedback = card.querySelector('.feedback');
-                feedback.style.display = 'none';
+    function retryQuiz() {
+        // Reset everything
+        userAnswers = {};
+        
+        // Reset all question cards
+        document.querySelectorAll('.question-card').forEach(card => {
+            const options = card.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('selected', 'correct-answer', 'wrong-answer');
+                opt.style.pointerEvents = 'auto';
             });
+            
+            const feedback = card.querySelector('.feedback');
+            feedback.style.display = 'none';
+        });
 
-            document.getElementById('results-section').style.display = 'none';
-            document.querySelector('.submit-section').style.display = 'block';
+        // Hide results and show submit button
+        document.getElementById('results-section').style.display = 'none';
+        document.querySelector('.submit-section').style.display = 'block';
 
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
 
 </body>
-
 </html>
